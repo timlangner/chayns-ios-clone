@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		075EADC925D1281A00C36EBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADC825D1281A00C36EBF /* AppDelegate.swift */; };
+		075EADCB25D1281A00C36EBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADCA25D1281A00C36EBF /* SceneDelegate.swift */; };
+		075EADCD25D1281A00C36EBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADCC25D1281A00C36EBF /* ViewController.swift */; };
+		075EADD025D1281A00C36EBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075EADCE25D1281A00C36EBF /* Main.storyboard */; };
+		075EADD225D1281B00C36EBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 075EADD125D1281B00C36EBF /* Assets.xcassets */; };
+		075EADD525D1281B00C36EBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 075EADD325D1281B00C36EBF /* LaunchScreen.storyboard */; };
+		075EADE025D1281B00C36EBF /* chayns_ios_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADDF25D1281B00C36EBF /* chayns_ios_cloneTests.swift */; };
+		075EADEB25D1281B00C36EBF /* chayns_ios_cloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADEA25D1281B00C36EBF /* chayns_ios_cloneUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		075EADDC25D1281B00C36EBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 075EADBD25D1281A00C36EBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 075EADC425D1281A00C36EBF;
+			remoteInfo = "chayns-ios-clone";
+		};
+		075EADE725D1281B00C36EBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 075EADBD25D1281A00C36EBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 075EADC425D1281A00C36EBF;
+			remoteInfo = "chayns-ios-clone";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		075EADC525D1281A00C36EBF /* chayns-ios-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chayns-ios-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		075EADC825D1281A00C36EBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		075EADCA25D1281A00C36EBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		075EADCC25D1281A00C36EBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		075EADCF25D1281A00C36EBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		075EADD125D1281B00C36EBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		075EADD425D1281B00C36EBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		075EADD625D1281B00C36EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		075EADDB25D1281B00C36EBF /* chayns-ios-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chayns-ios-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		075EADDF25D1281B00C36EBF /* chayns_ios_cloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chayns_ios_cloneTests.swift; sourceTree = "<group>"; };
+		075EADE125D1281B00C36EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		075EADE625D1281B00C36EBF /* chayns-ios-cloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chayns-ios-cloneUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		075EADEA25D1281B00C36EBF /* chayns_ios_cloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chayns_ios_cloneUITests.swift; sourceTree = "<group>"; };
+		075EADEC25D1281B00C36EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		075EADC225D1281A00C36EBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		075EADD825D1281B00C36EBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		075EADE325D1281B00C36EBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		075EADBC25D1281A00C36EBF = {
+			isa = PBXGroup;
+			children = (
+				075EADC725D1281A00C36EBF /* chayns-ios-clone */,
+				075EADDE25D1281B00C36EBF /* chayns-ios-cloneTests */,
+				075EADE925D1281B00C36EBF /* chayns-ios-cloneUITests */,
+				075EADC625D1281A00C36EBF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		075EADC625D1281A00C36EBF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				075EADC525D1281A00C36EBF /* chayns-ios-clone.app */,
+				075EADDB25D1281B00C36EBF /* chayns-ios-cloneTests.xctest */,
+				075EADE625D1281B00C36EBF /* chayns-ios-cloneUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		075EADC725D1281A00C36EBF /* chayns-ios-clone */ = {
+			isa = PBXGroup;
+			children = (
+				075EADC825D1281A00C36EBF /* AppDelegate.swift */,
+				075EADCA25D1281A00C36EBF /* SceneDelegate.swift */,
+				075EADCC25D1281A00C36EBF /* ViewController.swift */,
+				075EADCE25D1281A00C36EBF /* Main.storyboard */,
+				075EADD125D1281B00C36EBF /* Assets.xcassets */,
+				075EADD325D1281B00C36EBF /* LaunchScreen.storyboard */,
+				075EADD625D1281B00C36EBF /* Info.plist */,
+			);
+			path = "chayns-ios-clone";
+			sourceTree = "<group>";
+		};
+		075EADDE25D1281B00C36EBF /* chayns-ios-cloneTests */ = {
+			isa = PBXGroup;
+			children = (
+				075EADDF25D1281B00C36EBF /* chayns_ios_cloneTests.swift */,
+				075EADE125D1281B00C36EBF /* Info.plist */,
+			);
+			path = "chayns-ios-cloneTests";
+			sourceTree = "<group>";
+		};
+		075EADE925D1281B00C36EBF /* chayns-ios-cloneUITests */ = {
+			isa = PBXGroup;
+			children = (
+				075EADEA25D1281B00C36EBF /* chayns_ios_cloneUITests.swift */,
+				075EADEC25D1281B00C36EBF /* Info.plist */,
+			);
+			path = "chayns-ios-cloneUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		075EADC425D1281A00C36EBF /* chayns-ios-clone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 075EADEF25D1281B00C36EBF /* Build configuration list for PBXNativeTarget "chayns-ios-clone" */;
+			buildPhases = (
+				075EADC125D1281A00C36EBF /* Sources */,
+				075EADC225D1281A00C36EBF /* Frameworks */,
+				075EADC325D1281A00C36EBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "chayns-ios-clone";
+			productName = "chayns-ios-clone";
+			productReference = 075EADC525D1281A00C36EBF /* chayns-ios-clone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		075EADDA25D1281B00C36EBF /* chayns-ios-cloneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 075EADF225D1281B00C36EBF /* Build configuration list for PBXNativeTarget "chayns-ios-cloneTests" */;
+			buildPhases = (
+				075EADD725D1281B00C36EBF /* Sources */,
+				075EADD825D1281B00C36EBF /* Frameworks */,
+				075EADD925D1281B00C36EBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				075EADDD25D1281B00C36EBF /* PBXTargetDependency */,
+			);
+			name = "chayns-ios-cloneTests";
+			productName = "chayns-ios-cloneTests";
+			productReference = 075EADDB25D1281B00C36EBF /* chayns-ios-cloneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		075EADE525D1281B00C36EBF /* chayns-ios-cloneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 075EADF525D1281B00C36EBF /* Build configuration list for PBXNativeTarget "chayns-ios-cloneUITests" */;
+			buildPhases = (
+				075EADE225D1281B00C36EBF /* Sources */,
+				075EADE325D1281B00C36EBF /* Frameworks */,
+				075EADE425D1281B00C36EBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				075EADE825D1281B00C36EBF /* PBXTargetDependency */,
+			);
+			name = "chayns-ios-cloneUITests";
+			productName = "chayns-ios-cloneUITests";
+			productReference = 075EADE625D1281B00C36EBF /* chayns-ios-cloneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		075EADBD25D1281A00C36EBF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					075EADC425D1281A00C36EBF = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					075EADDA25D1281B00C36EBF = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 075EADC425D1281A00C36EBF;
+					};
+					075EADE525D1281B00C36EBF = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 075EADC425D1281A00C36EBF;
+					};
+				};
+			};
+			buildConfigurationList = 075EADC025D1281A00C36EBF /* Build configuration list for PBXProject "chayns-ios-clone" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 075EADBC25D1281A00C36EBF;
+			productRefGroup = 075EADC625D1281A00C36EBF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				075EADC425D1281A00C36EBF /* chayns-ios-clone */,
+				075EADDA25D1281B00C36EBF /* chayns-ios-cloneTests */,
+				075EADE525D1281B00C36EBF /* chayns-ios-cloneUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		075EADC325D1281A00C36EBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075EADD525D1281B00C36EBF /* LaunchScreen.storyboard in Resources */,
+				075EADD225D1281B00C36EBF /* Assets.xcassets in Resources */,
+				075EADD025D1281A00C36EBF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		075EADD925D1281B00C36EBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		075EADE425D1281B00C36EBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		075EADC125D1281A00C36EBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075EADCD25D1281A00C36EBF /* ViewController.swift in Sources */,
+				075EADC925D1281A00C36EBF /* AppDelegate.swift in Sources */,
+				075EADCB25D1281A00C36EBF /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		075EADD725D1281B00C36EBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075EADE025D1281B00C36EBF /* chayns_ios_cloneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		075EADE225D1281B00C36EBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075EADEB25D1281B00C36EBF /* chayns_ios_cloneUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		075EADDD25D1281B00C36EBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 075EADC425D1281A00C36EBF /* chayns-ios-clone */;
+			targetProxy = 075EADDC25D1281B00C36EBF /* PBXContainerItemProxy */;
+		};
+		075EADE825D1281B00C36EBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 075EADC425D1281A00C36EBF /* chayns-ios-clone */;
+			targetProxy = 075EADE725D1281B00C36EBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		075EADCE25D1281A00C36EBF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				075EADCF25D1281A00C36EBF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		075EADD325D1281B00C36EBF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				075EADD425D1281B00C36EBF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		075EADED25D1281B00C36EBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		075EADEE25D1281B00C36EBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		075EADF025D1281B00C36EBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "chayns-ios-clone/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tobit.chayns-ios-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		075EADF125D1281B00C36EBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "chayns-ios-clone/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tobit.chayns-ios-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		075EADF325D1281B00C36EBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "chayns-ios-cloneTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tobit.chayns-ios-cloneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chayns-ios-clone.app/chayns-ios-clone";
+			};
+			name = Debug;
+		};
+		075EADF425D1281B00C36EBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "chayns-ios-cloneTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tobit.chayns-ios-cloneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chayns-ios-clone.app/chayns-ios-clone";
+			};
+			name = Release;
+		};
+		075EADF625D1281B00C36EBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "chayns-ios-cloneUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tobit.chayns-ios-cloneUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "chayns-ios-clone";
+			};
+			name = Debug;
+		};
+		075EADF725D1281B00C36EBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "chayns-ios-cloneUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tobit.chayns-ios-cloneUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "chayns-ios-clone";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		075EADC025D1281A00C36EBF /* Build configuration list for PBXProject "chayns-ios-clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				075EADED25D1281B00C36EBF /* Debug */,
+				075EADEE25D1281B00C36EBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		075EADEF25D1281B00C36EBF /* Build configuration list for PBXNativeTarget "chayns-ios-clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				075EADF025D1281B00C36EBF /* Debug */,
+				075EADF125D1281B00C36EBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		075EADF225D1281B00C36EBF /* Build configuration list for PBXNativeTarget "chayns-ios-cloneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				075EADF325D1281B00C36EBF /* Debug */,
+				075EADF425D1281B00C36EBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		075EADF525D1281B00C36EBF /* Build configuration list for PBXNativeTarget "chayns-ios-cloneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				075EADF625D1281B00C36EBF /* Debug */,
+				075EADF725D1281B00C36EBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 075EADBD25D1281A00C36EBF /* Project object */;
+}
