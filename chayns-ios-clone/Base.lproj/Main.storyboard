@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +21,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem title="" image="line.3.crossed.swirl.circle" catalog="system" id="ITZ-Y5-gZm"/>
+                                    <tabBarItem title="" image="line.3.crossed.swirl.circle" catalog="system" id="ITZ-Y5-gZm">
+                                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                    </tabBarItem>
                                     <tabBarItem title="Eingang" badgeValue="3" id="hgz-QT-yrc">
                                         <imageReference key="image" image="mail.stack" catalog="system" symbolScale="medium"/>
                                     </tabBarItem>
@@ -32,128 +33,13 @@
                                     <tabBarItem title="Wallet" id="ByU-hr-eRj">
                                         <imageReference key="image" image="rectangle.stack" catalog="system" symbolScale="medium"/>
                                     </tabBarItem>
-                                    <tabBarItem title="mehr" image="ellipsis" catalog="system" selectedImage="ellipsis" id="yuF-es-X3n"/>
+                                    <tabBarItem title="Mehr" image="ellipsis" catalog="system" selectedImage="ellipsis" id="yuF-es-X3n"/>
                                 </items>
-                                <color key="selectedImageTintColor" systemColor="labelColor"/>
+                                <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tabBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_picture" translatesAutoresizingMaskIntoConstraints="NO" id="dAk-oM-htA">
-                                <rect key="frame" x="332" y="53" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="Yj3-na-ASf"/>
-                                    <constraint firstAttribute="width" constant="35" id="fR4-Wd-L5l"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <searchBar contentMode="redraw" barStyle="black" text="" placeholder="Finden" translatesAutoresizingMaskIntoConstraints="NO" id="WBw-nC-R5T">
-                                <rect key="frame" x="23" y="238" width="344" height="56"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </searchBar>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uU7-Aa-Jnc">
-                                <rect key="frame" x="42" y="326" width="60" height="90"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="labs-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ctv-jx-i7P">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="R0b-xs-uen"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Tj5-Vz-tHy"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="h6k-Uu-ojY"/>
-                                            <constraint firstAttribute="width" constant="60" id="tyC-BK-T1J"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Labs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q48-Zg-OBp">
-                                        <rect key="frame" x="15" y="65" width="30" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="q48-Zg-OBp" firstAttribute="top" secondItem="Ctv-jx-i7P" secondAttribute="bottom" constant="5" id="HR7-VF-md5"/>
-                                    <constraint firstItem="q48-Zg-OBp" firstAttribute="centerX" secondItem="uU7-Aa-Jnc" secondAttribute="centerX" id="IRR-hv-CZk"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" id="F3d-kr-hit">
-                                <rect key="frame" x="122" y="326" width="60" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="campus-icon" translatesAutoresizingMaskIntoConstraints="NO" id="lk9-1K-uB4">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Yju-td-adn"/>
-                                            <constraint firstAttribute="width" constant="60" id="e0X-Ph-fxP"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Tobit.Campus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCS-Kv-BuS">
-                                        <rect key="frame" x="-5.6666666666666714" y="65" width="71.666666666666671" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="Jlr-h7-tXr"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="HCS-Kv-BuS" firstAttribute="centerX" secondItem="F3d-kr-hit" secondAttribute="centerX" id="YYp-5W-uKx"/>
-                                    <constraint firstItem="HCS-Kv-BuS" firstAttribute="top" secondItem="lk9-1K-uB4" secondAttribute="bottom" constant="5" id="gT7-VU-yHk"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" id="2f9-lq-A8I">
-                                <rect key="frame" x="204" y="326" width="60" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="labs-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eVm-Iw-9nt">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="4Al-6S-jWW"/>
-                                            <constraint firstAttribute="height" constant="60" id="B7y-mo-CGP"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Labs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ju-eX-62Y">
-                                        <rect key="frame" x="17.333333333333343" y="65" width="25.333333333333329" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <viewLayoutGuide key="safeArea" id="JOs-V5-3ar"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="3ju-eX-62Y" firstAttribute="top" secondItem="eVm-Iw-9nt" secondAttribute="bottom" constant="5" id="0EX-m4-CvK"/>
-                                    <constraint firstItem="3ju-eX-62Y" firstAttribute="centerX" secondItem="2f9-lq-A8I" secondAttribute="centerX" id="OKe-Vp-0C7"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tim Langner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vna-Y4-UIB">
-                                <rect key="frame" x="231" y="61.666666666666657" width="86" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chayns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqb-BX-5lb">
-                                <rect key="frame" x="126.00000000000001" y="149" width="138.33333333333337" height="54"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.13010038860103623" green="0.13010038860103623" blue="0.13010038860103623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="WBw-nC-R5T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Aw0-MV-ACa"/>
-                            <constraint firstItem="kqb-BX-5lb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="105" id="YwA-cR-i0C"/>
-                            <constraint firstItem="dAk-oM-htA" firstAttribute="centerY" secondItem="Vna-Y4-UIB" secondAttribute="centerY" id="dDQ-nP-q3Q"/>
-                            <constraint firstItem="dAk-oM-htA" firstAttribute="trailing" secondItem="WBw-nC-R5T" secondAttribute="trailing" id="dXt-s0-TPs"/>
-                            <constraint firstItem="kqb-BX-5lb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eJ3-Yc-h2r"/>
-                            <constraint firstItem="dAk-oM-htA" firstAttribute="leading" secondItem="Vna-Y4-UIB" secondAttribute="trailing" constant="15" id="fiV-My-BCu"/>
-                            <constraint firstItem="WBw-nC-R5T" firstAttribute="top" secondItem="kqb-BX-5lb" secondAttribute="bottom" constant="35" id="hls-Zi-vE6"/>
-                            <constraint firstItem="dAk-oM-htA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="iYy-n0-YXX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dAk-oM-htA" secondAttribute="trailing" constant="23" id="zKk-N2-Vhu"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -163,15 +49,9 @@
     </scenes>
     <resources>
         <image name="bubble.left.and.bubble.right" catalog="system" width="128" height="96"/>
-        <image name="campus-icon" width="114" height="114"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="labs-icon" width="114" height="114"/>
         <image name="line.3.crossed.swirl.circle" catalog="system" width="128" height="121"/>
         <image name="mail.stack" catalog="system" width="128" height="122"/>
-        <image name="profile_picture" width="116" height="116"/>
         <image name="rectangle.stack" catalog="system" width="128" height="122"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
