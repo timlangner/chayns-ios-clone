@@ -19,10 +19,12 @@ class TabBar: UITabBarController {
     
     fileprivate func createNavController(for rootViewController: UIViewController,
                                                       title: String,
+                                                      badgeValue: String?,
                                                       image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
+        navController.tabBarItem.badgeValue = badgeValue
         navController.navigationBar.prefersLargeTitles = true
         return navController
     }
@@ -30,11 +32,11 @@ class TabBar: UITabBarController {
     // Generate navigation controller for the tab bar with title, icon and icon title
     func setupVCs() {
         viewControllers = [
-            createNavController(for: ViewController(), title: NSLocalizedString("", comment: ""), image: UIImage(systemName: "magnifyingglass")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Eingang", comment: ""), image: UIImage(systemName: "envelope")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Intercom", comment: ""), image: UIImage(systemName: "bubble.left.and.bubble.right")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Wallet", comment: ""), image: UIImage(systemName: "folder")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Mehr", comment: ""), image: UIImage(systemName: "ellipsis")!)
+            createNavController(for: ViewController(), title: NSLocalizedString("", comment: ""), badgeValue: nil, image: UIImage(systemName: "magnifyingglass")!),
+            createNavController(for: ViewController(), title: NSLocalizedString("Eingang", comment: ""), badgeValue: "3", image: UIImage(systemName: "envelope")!),
+            createNavController(for: ViewController(), title: NSLocalizedString("Intercom", comment: ""), badgeValue: "4", image: UIImage(systemName: "bubble.left.and.bubble.right")!),
+            createNavController(for: ViewController(), title: NSLocalizedString("Wallet", comment: ""), badgeValue: nil, image: UIImage(systemName: "folder")!),
+            createNavController(for: ViewController(), title: NSLocalizedString("Mehr", comment: ""), badgeValue: nil, image: UIImage(systemName: "ellipsis")!)
         ]
     }
 }
