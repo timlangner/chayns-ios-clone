@@ -52,6 +52,11 @@ class ViewController: UIViewController {
         // Change background color of view
         self.view.backgroundColor = UIColor(hexString: "#131212")
         
+        // Add tap gesture to view
+        let viewClickTapGesture = UITapGestureRecognizer()
+        self.view.addGestureRecognizer(viewClickTapGesture)
+        viewClickTapGesture.addTarget(self, action: #selector(viewClick))
+        
         // Get main window for save view
         let keyWindow = UIApplication.shared.connectedScenes
             .filter({$0.activationState == .foregroundActive})
@@ -147,6 +152,11 @@ class ViewController: UIViewController {
             siteContainer.addSubview(imageView)
             siteContainer.addSubview(siteName)
             
+            // Add tap gesture to site container
+            let siteClickTapGesture = UITapGestureRecognizer()
+            siteContainer.addGestureRecognizer(siteClickTapGesture)
+            siteClickTapGesture.addTarget(self, action: #selector(siteClick))
+            
             // Add site to sites container
             sitesContainer.addSubview(siteContainer)
             
@@ -167,19 +177,18 @@ class ViewController: UIViewController {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
         webView = WKWebView(frame: view.bounds, configuration: config)
-        // self.view = webView
         
         let siteRequest = URLRequest(url: URL(string: "https://labs.tobit.com")!)
         webView.load(siteRequest)
-        
-        // Check for tap
-        let tapGesture = UITapGestureRecognizer()
-        self.view.addGestureRecognizer(tapGesture)
-        tapGesture.addTarget(self, action: #selector(tapClick))
     }
     
-    @objc func tapClick() {
+    @objc func viewClick() {
         searchBar.endEditing(true) /* close keyboard  */
         print("clicked")
+    }
+    
+    @objc func siteClick() {
+        // Show web view
+        self.view = webView
     }
 }
