@@ -93,24 +93,54 @@ class ViewController: UIViewController {
 
         // Create sites container
         let sitesContainer:UIView = UIView()
-        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 450)
+        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 425)
         sitesContainer.layer.borderWidth = 1
         sitesContainer.layer.borderColor = UIColor.white.cgColor
 
         let campusIcon = UIImage(named: "labs-icon")
+        var marginBetween = 0
+        var marginTop = 0
 
-        for _ in 0...7 {
+        for i in 0...15 {
+            // Create new container for the site icon & name
+            let siteContainer:UIView = UIView()
+            siteContainer.frame = CGRect(x: marginBetween, y: marginTop, width: 60, height: 80)
+            // siteContainer.layer.borderWidth = 1
+            // siteContainer.layer.borderColor = UIColor.white.cgColor
+            
             // Create a new UIImageView as a container for the image
             let imageView:UIImageView = UIImageView()
-            imageView.frame = CGRect(x: 55, y: 30, width: 60, height: 60)
+            imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
             imageView.image = campusIcon
+            
+            // Create label for the site name
+            let siteName:UILabel = UILabel()
+            siteName.text = "Labs"
+            siteName.font = UIFont.systemFont(ofSize: 11)
+            siteName.textAlignment = .center
+            siteName.textColor = .white
+            siteName.frame = CGRect(x: 0, y: imageView.frame.maxY, width: imageView.frame.width, height: 25)
 
-            // Add image to the sites container
-            sitesContainer.addSubview(imageView)
+            // Add image and label to the site container
+            siteContainer.addSubview(imageView)
+            siteContainer.addSubview(siteName)
+            
+            // Add site to sites container
+            sitesContainer.addSubview(siteContainer)
+            
+            // Check if a row has 4 site containers and if so update the top margin & reset the horizontally margin
+            print(marginTop)
+            if ((i + 1) % 4 == 0) {
+                print("hello")
+                marginTop += 100
+                marginBetween = 0
+            } else {
+                // Update margin | 60px (the width of the container + 20px as margin between the boxes)
+                marginBetween += 80
+            }
         }
         
         // Add sites container to parent view
         self.view.addSubview(sitesContainer)
     }
 }
-
