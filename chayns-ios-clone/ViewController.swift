@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 import Foundation
 
 extension UIColor {
@@ -39,13 +40,22 @@ extension UIColor {
 
 class ViewController: UIViewController {
     
+    // Create Web View
+    var webView : WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Change background color of view
         self.view.backgroundColor = UIColor(hexString: "#131212")
         
-        let keyWindow = UIApplication.shared.keyWindow
+        // Get main window for save view
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first
         let topInset = keyWindow!.safeAreaInsets.top
         
         // Create profile container
@@ -90,6 +100,10 @@ class ViewController: UIViewController {
         searchBar.barStyle = UIBarStyle.black
         searchBar.placeholder = "Finden"
         searchBar.frame = CGRect(x: self.view.frame.minX + 25, y: chaynsLabel.frame.maxY + 40, width: self.view.frame.width - 50, height: 40)
+        searchBar.layer.borderWidth = 0.5
+        searchBar.layer.borderColor = UIColor.gray.cgColor
+        searchBar.backgroundImage = UIImage()
+        searchBar.backgroundColor = .black
         
         // Add search bar to parent view
         self.view.addSubview(searchBar)
@@ -143,5 +157,13 @@ class ViewController: UIViewController {
         
         // Add sites container to parent view
         self.view.addSubview(sitesContainer)
+        
+        let config = WKWebViewConfiguration()
+        config.allowsInlineMediaPlayback = true
+        webView = WKWebView(frame: view.bounds, configuration: config)
+        // self.view = webView
+        
+        let siteRequest = URLRequest(url: URL(string: "https://labs.tobit.com")!)
+        webView.load(siteRequest)
     }
 }
