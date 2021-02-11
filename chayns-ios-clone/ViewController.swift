@@ -45,9 +45,12 @@ class ViewController: UIViewController {
         // Change background color of view
         self.view.backgroundColor = UIColor(hexString: "#131212")
         
+        let keyWindow = UIApplication.shared.keyWindow
+        let topInset = keyWindow!.safeAreaInsets.top
+        
         // Create profile container
         let profileContainer:UIView = UIView()
-        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: 50, width: 130, height: 35)
+        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
 
         // Create profile name
         let profileName:UILabel = UILabel()
@@ -93,7 +96,7 @@ class ViewController: UIViewController {
 
         // Create sites container
         let sitesContainer:UIView = UIView()
-        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 425)
+        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 475)
         // sitesContainer.layer.borderWidth = 1
         // sitesContainer.layer.borderColor = UIColor.white.cgColor
 
