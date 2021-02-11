@@ -14,6 +14,7 @@
 		075EADE025D1281B00C36EBF /* chayns_ios_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADDF25D1281B00C36EBF /* chayns_ios_cloneTests.swift */; };
 		075EADEB25D1281B00C36EBF /* chayns_ios_cloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EADEA25D1281B00C36EBF /* chayns_ios_cloneUITests.swift */; };
 		0789475D25D29F5200FD0AC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789475C25D29F5200FD0AC1 /* SceneDelegate.swift */; };
+		07CBC75425D52C6B00905213 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBC75325D52C6B00905213 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		075EADEA25D1281B00C36EBF /* chayns_ios_cloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chayns_ios_cloneUITests.swift; sourceTree = "<group>"; };
 		075EADEC25D1281B00C36EBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0789475C25D29F5200FD0AC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		07CBC75325D52C6B00905213 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				075EADD125D1281B00C36EBF /* Assets.xcassets */,
 				075EADD325D1281B00C36EBF /* LaunchScreen.storyboard */,
 				075EADD625D1281B00C36EBF /* Info.plist */,
+				07CBC75325D52C6B00905213 /* TabBar.swift */,
 			);
 			path = "chayns-ios-clone";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				075EADCD25D1281A00C36EBF /* ViewController.swift in Sources */,
 				075EADC925D1281A00C36EBF /* AppDelegate.swift in Sources */,
 				0789475D25D29F5200FD0AC1 /* SceneDelegate.swift in Sources */,
+				07CBC75425D52C6B00905213 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

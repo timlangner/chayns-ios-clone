@@ -94,8 +94,8 @@ class ViewController: UIViewController {
         // Create sites container
         let sitesContainer:UIView = UIView()
         sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 425)
-        sitesContainer.layer.borderWidth = 1
-        sitesContainer.layer.borderColor = UIColor.white.cgColor
+        // sitesContainer.layer.borderWidth = 1
+        // sitesContainer.layer.borderColor = UIColor.white.cgColor
 
         let campusIcon = UIImage(named: "labs-icon")
         var marginBetween = 0
@@ -129,9 +129,7 @@ class ViewController: UIViewController {
             sitesContainer.addSubview(siteContainer)
             
             // Check if a row has 4 site containers and if so update the top margin & reset the horizontally margin
-            print(marginTop)
             if ((i + 1) % 4 == 0) {
-                print("hello")
                 marginTop += 100
                 marginBetween = 0
             } else {
