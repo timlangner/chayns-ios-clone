@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     // Create Web View
     var webView : WKWebView!
     
+    // Create search bar
+    let searchBar:UISearchBar = UISearchBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,15 +98,19 @@ class ViewController: UIViewController {
         // Add chayns label to parent view
         self.view.addSubview(chaynsLabel)
 
-        // Create search bar
-        let searchBar:UISearchBar = UISearchBar()
+        // Configure searchbar
         searchBar.barStyle = UIBarStyle.black
         searchBar.placeholder = "Finden"
         searchBar.frame = CGRect(x: self.view.frame.minX + 25, y: chaynsLabel.frame.maxY + 40, width: self.view.frame.width - 50, height: 40)
         searchBar.layer.borderWidth = 0.5
         searchBar.layer.borderColor = UIColor.gray.cgColor
-        searchBar.backgroundImage = UIImage()
+        searchBar.backgroundImage = UIImage() /* remove shadow borders */
         searchBar.backgroundColor = .black
+        searchBar.tintColor = .systemBlue /* cursor color */
+        
+        // Accessing the textfield inside the search bar to change the text color
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = .white
         
         // Add search bar to parent view
         self.view.addSubview(searchBar)
@@ -122,8 +129,6 @@ class ViewController: UIViewController {
             // Create new container for the site icon & name
             let siteContainer:UIView = UIView()
             siteContainer.frame = CGRect(x: marginBetween, y: marginTop, width: 60, height: 80)
-            // siteContainer.layer.borderWidth = 1
-            // siteContainer.layer.borderColor = UIColor.white.cgColor
             
             // Create a new UIImageView as a container for the image
             let imageView:UIImageView = UIImageView()
@@ -158,6 +163,7 @@ class ViewController: UIViewController {
         // Add sites container to parent view
         self.view.addSubview(sitesContainer)
         
+        // Add WebView
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
         webView = WKWebView(frame: view.bounds, configuration: config)
@@ -165,5 +171,15 @@ class ViewController: UIViewController {
         
         let siteRequest = URLRequest(url: URL(string: "https://labs.tobit.com")!)
         webView.load(siteRequest)
+        
+        // Check for tap
+        let tapGesture = UITapGestureRecognizer()
+        self.view.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(tapClick))
+    }
+    
+    @objc func tapClick() {
+        searchBar.endEditing(true) /* close keyboard  */
+        print("clicked")
     }
 }
