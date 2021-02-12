@@ -38,12 +38,13 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
 
     // Configure tabbar items
     func setupVCs() {
+        let iconConfig = UIImage.SymbolConfiguration(scale: .medium)
         viewControllers = [
             createNavController(for: ViewController(), title: NSLocalizedString("", comment: ""), badgeValue: nil, image: UIImage(systemName: "magnifyingglass")!),
-            createNavController(for: UIViewController(), title: NSLocalizedString("Eingang", comment: ""), badgeValue: "3", image: UIImage(systemName: "envelope")!),
-            createNavController(for: UIViewController(), title: NSLocalizedString("Intercom", comment: ""), badgeValue: "4", image: UIImage(systemName: "bubble.left.and.bubble.right")!),
-            createNavController(for: UIViewController(), title: NSLocalizedString("Wallet", comment: ""), badgeValue: nil, image: UIImage(systemName: "folder")!),
-            createNavController(for: UIViewController(), title: NSLocalizedString("Mehr", comment: ""), badgeValue: nil, image: UIImage(systemName: "ellipsis")!)
+            createNavController(for: UIViewController(), title: NSLocalizedString("Eingang", comment: ""), badgeValue: "3", image: UIImage(systemName: "envelope", withConfiguration: iconConfig)!),
+            createNavController(for: UIViewController(), title: NSLocalizedString("Intercom", comment: ""), badgeValue: "4", image: UIImage(systemName: "bubble.left.and.bubble.right", withConfiguration: iconConfig)!),
+            createNavController(for: UIViewController(), title: NSLocalizedString("Wallet", comment: ""), badgeValue: nil, image: UIImage(systemName: "folder", withConfiguration: iconConfig)!),
+            createNavController(for: UIViewController(), title: NSLocalizedString("Mehr", comment: ""), badgeValue: nil, image: UIImage(systemName: "ellipsis", withConfiguration: iconConfig)!)
         ]
     }
     
