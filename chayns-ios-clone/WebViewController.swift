@@ -33,7 +33,7 @@ class WebViewController: UIViewController {
         // Configure WebView
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        webView = WKWebView(frame: CGRect(x: self.view.frame.minX, y: topInset, width: self.view.frame.width, height: self.view.frame.height), configuration: config)
+        webView = WKWebView(frame: CGRect(x: self.view.frame.minX, y: topInset, width: self.view.frame.width, height: self.view.frame.height - topInset), configuration: config)
         webView.scrollView.contentInsetAdjustmentBehavior = UIScrollView.ContentInsetAdjustmentBehavior.never
 
         // Set overlay for web view
