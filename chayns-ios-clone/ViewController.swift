@@ -40,11 +40,11 @@ extension UIColor {
 
 class ViewController: UIViewController {
     
-    // Create Web View
-    var webView : WKWebView!
-    
     // Create search bar
     let searchBar:UISearchBar = UISearchBar()
+    
+    // Create Web View
+    var webView : WKWebView!
     
     // Create overlay for web view
     let overlay:UIView = UIView()
@@ -126,8 +126,6 @@ class ViewController: UIViewController {
         // Create sites container
         let sitesContainer:UIView = UIView()
         sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 475)
-        // sitesContainer.layer.borderWidth = 1
-        // sitesContainer.layer.borderColor = UIColor.white.cgColor
 
         let campusIcon = UIImage(named: "labs-icon")
         var marginBetween = 0
@@ -176,7 +174,7 @@ class ViewController: UIViewController {
         // Add sites container to parent view
         self.view.addSubview(sitesContainer)
         
-        // Add WebView
+        // Configure WebView
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
         webView = WKWebView(frame: CGRect(x: self.view.frame.minX, y: topInset, width: self.view.frame.width, height: self.view.frame.height), configuration: config)
@@ -197,7 +195,18 @@ class ViewController: UIViewController {
     
     @objc func siteClick() {
         self.view.addSubview(webView) /* Show web view */
-        
         self.view.addSubview(overlay) /* Show overlay for web view */
+        let tabBar:TabBar = TabBar()
+        tabBar.changeStatusBarStyle(style: UIBarStyle.default) /* Change status bar color */
+    }
+    
+    func closeWebView() {
+        print("closeWebView")
+        
+        if (webView != nil) {
+            print("ready to remove")
+            webView.removeFromSuperview()
+            overlay.removeFromSuperview()
+        }
     }
 }

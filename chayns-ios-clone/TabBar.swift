@@ -8,28 +8,35 @@
 import UIKit
 import Foundation
 
-class TabBar: UITabBarController {
+class TabBar: UITabBarController, UITabBarControllerDelegate {
+    
+    var test: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().barTintColor = .systemBackground
+        
+        UITabBar.appearance().barTintColor = .systemBackground /* color scheme */
         tabBar.tintColor = .label
-        setupVCs()
+        
+        setupVCs() /* Configure Tab Items */
+        
+        self.delegate = self
     }
     
+    // Create navigation controller
     fileprivate func createNavController(for rootViewController: UIViewController,
                                                       title: String,
                                                       badgeValue: String?,
                                                       image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
         navController.tabBarItem.title = title
-        navController.tabBarItem.image = image
         navController.tabBarItem.badgeValue = badgeValue
+        navController.tabBarItem.image = image
         navController.navigationBar.prefersLargeTitles = true
         return navController
     }
 
-    // Generate navigation controller for the tab bar with title, icon and icon title
+    // Configure tabbar items
     func setupVCs() {
         viewControllers = [
             createNavController(for: ViewController(), title: NSLocalizedString("", comment: ""), badgeValue: nil, image: UIImage(systemName: "magnifyingglass")!),
@@ -38,5 +45,32 @@ class TabBar: UITabBarController {
             createNavController(for: ViewController(), title: NSLocalizedString("Wallet", comment: ""), badgeValue: nil, image: UIImage(systemName: "folder")!),
             createNavController(for: ViewController(), title: NSLocalizedString("Mehr", comment: ""), badgeValue: nil, image: UIImage(systemName: "ellipsis")!)
         ]
+    }
+    
+    // React to click events
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        // Get index of clicked tab
+        guard let index = tabBarController.viewControllers?.firstIndex(where: {$0 === viewController}) else {
+            return false
+        }
+        
+        // Check which tab is selected
+        if index == 0 {
+            
+            // Close the web view if opened
+            print("First tab selected")
+            // let currentView: ViewController = tabBarController.selectedViewController as! ViewController
+            // currentView.closeWebView()
+        }
+        
+        return true
+    }
+    
+    // Change Statusbar color
+    func changeStatusBarStyle(style: UIBarStyle) {
+        print("Change color")
+        self.navigationController?.navigationBar.barStyle = style
+        UITabBar.appearance().barTintColor = .systemBackground /* override color scheme */
     }
 }
