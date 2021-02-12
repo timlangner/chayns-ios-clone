@@ -107,6 +107,7 @@ class ViewController: UIViewController {
         searchBar.frame = CGRect(x: self.view.frame.minX + 25, y: chaynsLabel.frame.maxY + 40, width: self.view.frame.width - 50, height: 40)
         searchBar.layer.borderWidth = 0.5
         searchBar.layer.borderColor = UIColor.gray.cgColor
+        searchBar.layer.cornerRadius = 3
         searchBar.backgroundImage = UIImage() /* remove shadow borders */
         searchBar.backgroundColor = .black
         searchBar.tintColor = .systemBlue /* cursor color */
@@ -178,7 +179,7 @@ class ViewController: UIViewController {
         // QR scanner grab
         let scannerGrab:UIView = UIView()
         scannerGrab.backgroundColor = .gray
-        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 22.5, y: 12, width: 45, height: 4)
+        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
         scannerGrab.layer.cornerRadius = 2
         scannerGrab.clipsToBounds = true
         scanner.addSubview(scannerGrab)
