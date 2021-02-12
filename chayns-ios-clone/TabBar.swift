@@ -40,10 +40,10 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
     func setupVCs() {
         viewControllers = [
             createNavController(for: ViewController(), title: NSLocalizedString("", comment: ""), badgeValue: nil, image: UIImage(systemName: "magnifyingglass")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Eingang", comment: ""), badgeValue: "3", image: UIImage(systemName: "envelope")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Intercom", comment: ""), badgeValue: "4", image: UIImage(systemName: "bubble.left.and.bubble.right")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Wallet", comment: ""), badgeValue: nil, image: UIImage(systemName: "folder")!),
-            createNavController(for: ViewController(), title: NSLocalizedString("Mehr", comment: ""), badgeValue: nil, image: UIImage(systemName: "ellipsis")!)
+            createNavController(for: UIViewController(), title: NSLocalizedString("Eingang", comment: ""), badgeValue: "3", image: UIImage(systemName: "envelope")!),
+            createNavController(for: UIViewController(), title: NSLocalizedString("Intercom", comment: ""), badgeValue: "4", image: UIImage(systemName: "bubble.left.and.bubble.right")!),
+            createNavController(for: UIViewController(), title: NSLocalizedString("Wallet", comment: ""), badgeValue: nil, image: UIImage(systemName: "folder")!),
+            createNavController(for: UIViewController(), title: NSLocalizedString("Mehr", comment: ""), badgeValue: nil, image: UIImage(systemName: "ellipsis")!)
         ]
     }
     
@@ -57,11 +57,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         
         // Check which tab is selected
         if index == 0 {
-            
-            // Close the web view if opened
             print("First tab selected")
-            // let currentView: ViewController = tabBarController.selectedViewController as! ViewController
-            // currentView.closeWebView()
         }
         
         return true
