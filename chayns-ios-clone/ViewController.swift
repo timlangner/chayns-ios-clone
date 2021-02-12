@@ -179,9 +179,5 @@ class ViewController: UIViewController {
         let webView = WebViewController()
         webView.topInset = topInset
         self.navigationController?.pushViewController(webView, animated: true)
-        
-        // Change status bar color
-        let tabBar:TabBar = TabBar()
-        tabBar.changeStatusBarStyle(style: UIBarStyle.default)
     }
 }
