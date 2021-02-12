@@ -168,6 +168,20 @@ class ViewController: UIViewController {
         
         // Add sites container to parent view
         self.view.addSubview(sitesContainer)
+        
+        // QR scanner above tab bar
+        let scanner:UIView = UIView()
+        scanner.backgroundColor = .systemGray6
+        scanner.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.maxY - 109, width: self.view.frame.width, height: 25)
+        self.view.addSubview(scanner)
+        
+        // QR scanner grab
+        let scannerGrab:UIView = UIView()
+        scannerGrab.backgroundColor = .gray
+        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 22.5, y: 12, width: 45, height: 4)
+        scannerGrab.layer.cornerRadius = 2
+        scannerGrab.clipsToBounds = true
+        scanner.addSubview(scannerGrab)
     }
     
     @objc func viewClick() {
