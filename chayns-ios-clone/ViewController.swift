@@ -83,7 +83,6 @@ class ViewController: UIViewController {
         profilePictureView.clipsToBounds = true
         profilePictureView.image = profilePicture
         profilePictureView.frame = CGRect(x: profileContainer.frame.width - 35, y: 0, width: 35, height: 35)
-
         // Add profile name & picture to profile container
         profileContainer.addSubview(profileName)
         profileContainer.addSubview(profilePictureView)
