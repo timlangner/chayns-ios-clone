@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         chaynsLabel.textAlignment = .center
         chaynsLabel.textColor = .white
         chaynsLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
-        chaynsLabel.frame = CGRect(x: 0, y: profileContainer.frame.maxY + 50, width: self.view.frame.width, height: 50)
+        chaynsLabel.frame = CGRect(x: 0, y: profileContainer.frame.maxY + 65, width: self.view.frame.width, height: 50)
         
         // Add chayns label to parent view
         self.view.addSubview(chaynsLabel)
