@@ -123,11 +123,12 @@ class ViewController: UIViewController {
         let sitesContainer:UIView = UIView()
         sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 475)
 
-        let campusIcon = UIImage(named: "labs-icon")
         var marginBetween = 0
         var marginTop = 0
 
         for i in 0...15 {
+            let icon = UIImage(named: "icon\(i + 1)")
+            
             // Create new container for the site icon & name
             let siteContainer:UIView = UIView()
             siteContainer.frame = CGRect(x: marginBetween, y: marginTop, width: 60, height: 80)
@@ -135,7 +136,7 @@ class ViewController: UIViewController {
             // Create a new UIImageView as a container for the image
             let imageView:UIImageView = UIImageView()
             imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-            imageView.image = campusIcon
+            imageView.image = icon
             
             // Create label for the site name
             let siteName:UILabel = UILabel()
@@ -176,7 +177,7 @@ class ViewController: UIViewController {
         scanner.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.maxY - 109, width: self.view.frame.width, height: 25)
         self.view.addSubview(scanner)
         
-        // QR scanner grab
+        // QR scanner grabber
         let scannerGrab:UIView = UIView()
         scannerGrab.backgroundColor = .gray
         scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
