@@ -9,16 +9,40 @@ import UIKit
 import Foundation
 
 class TabBar: UITabBarController, UITabBarControllerDelegate {
+    var bottomSafeAreaInset:CGFloat = 0.0
     
-    var test: UIView!
+    func getSafeAreaInsets() {
+        // Get main window for save view
+        let window = UIApplication.shared.windows[0]
+        bottomSafeAreaInset = window.safeAreaInsets.bottom
+        print("bottomPadding", bottomSafeAreaInset)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.getSafeAreaInsets()
         
         UITabBar.appearance().barTintColor = .systemBackground /* color scheme */
         tabBar.tintColor = .label
         
         setupVCs() /* Configure Tab Items */
+        
+        // QR scanner above tab bar
+        let scanner:UIView = UIView()
+        scanner.backgroundColor = .systemGray6
+        
+        // x: left border of the screen, y: minY of tabbar + height, width: width of screen, height: 25
+        scanner.frame = CGRect(x: self.view.frame.minX, y: (tabBar.frame.minY - 25) - bottomSafeAreaInset , width: self.view.frame.width, height: 25)
+        self.view.addSubview(scanner)
+        
+        // QR scanner grabber
+        let scannerGrab:UIView = UIView()
+        scannerGrab.backgroundColor = .gray
+        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
+        scannerGrab.layer.cornerRadius = 2
+        scannerGrab.clipsToBounds = true
+        scanner.addSubview(scannerGrab)
         
         self.delegate = self
     }

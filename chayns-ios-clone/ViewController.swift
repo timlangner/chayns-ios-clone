@@ -43,7 +43,26 @@ class ViewController: UIViewController {
     // Create search bar
     let searchBar:UISearchBar = UISearchBar()
     
-    var topInset:CGFloat!
+    var topInset:CGFloat = 0.0
+    
+    let profileContainer:UIView = UIView()
+    
+    override func viewDidLayoutSubviews() {
+        // Get main window for save view
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .map({$0 as? UIWindowScene})
+            .compactMap({$0})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first
+        if let key = keyWindow {
+            topInset = key.safeAreaInsets.top
+            
+        }
+        
+        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +82,11 @@ class ViewController: UIViewController {
             .compactMap({$0})
             .first?.windows
             .filter({$0.isKeyWindow}).first
-        topInset = keyWindow!.safeAreaInsets.top
-        
+        if let key = keyWindow {
+            topInset = key.safeAreaInsets.top
+        }
+
         // Create profile container
-        let profileContainer:UIView = UIView()
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
 
         // Create profile name
@@ -171,19 +191,21 @@ class ViewController: UIViewController {
         // Add sites container to parent view
         self.view.addSubview(sitesContainer)
         
-        // QR scanner above tab bar
-        let scanner:UIView = UIView()
-        scanner.backgroundColor = .systemGray6
-        scanner.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.maxY - 109, width: self.view.frame.width, height: 25)
-        self.view.addSubview(scanner)
-        
-        // QR scanner grabber
-        let scannerGrab:UIView = UIView()
-        scannerGrab.backgroundColor = .gray
-        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
-        scannerGrab.layer.cornerRadius = 2
-        scannerGrab.clipsToBounds = true
-        scanner.addSubview(scannerGrab)
+//        // QR scanner above tab bar
+//        let scanner:UIView = UIView()
+//        scanner.backgroundColor = .systemGray6
+//
+//        // x: left border of the screen, y: minY of tabbar + height, width: width of screen, height: 25
+//        scanner.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.maxY - 109, width: self.view.frame.width, height: 25)
+//        self.view.addSubview(scanner)
+//
+//        // QR scanner grabber
+//        let scannerGrab:UIView = UIView()
+//        scannerGrab.backgroundColor = .gray
+//        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
+//        scannerGrab.layer.cornerRadius = 2
+//        scannerGrab.clipsToBounds = true
+//        scanner.addSubview(scannerGrab)
     }
     
     @objc func viewClick() {
