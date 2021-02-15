@@ -47,13 +47,16 @@ class ViewController: UIViewController {
     
     let profileContainer:UIView = UIView()
     
+    let scrollView:UIScrollView = UIScrollView()
+    
+    let contentView:UIView = UIView()
+    
     override func viewDidLayoutSubviews() {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
         topInset = window.safeAreaInsets.top
         
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
-        
     }
     
     override func viewDidLoad() {
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
         
         // Add tap gesture to view
         let viewClickTapGesture = UITapGestureRecognizer()
-        self.view.addGestureRecognizer(viewClickTapGesture)
+        scrollView.addGestureRecognizer(viewClickTapGesture)
         viewClickTapGesture.addTarget(self, action: #selector(viewClick))
         
         // Get main window for save view
@@ -78,13 +81,13 @@ class ViewController: UIViewController {
         let profileName:UILabel = UILabel()
         profileName.text = "Tim Langner"
         profileName.textColor = .white
-        profileName.font = UIFont.systemFont(ofSize: 14)
+        profileName.font = UIFont.systemFont(ofSize: 15)
         profileName.frame = CGRect(x: 0, y: 0, width: profileContainer.frame.width, height: profileContainer.frame.height)
 
         // Create ImageView for the profile picture
         let profilePictureView:UIImageView = UIImageView()
         let profilePicture = UIImage(named: "profile_picture")
-        profilePictureView.layer.cornerRadius = 20
+        profilePictureView.layer.cornerRadius = 17.5
         profilePictureView.clipsToBounds = true
         profilePictureView.image = profilePicture
         profilePictureView.frame = CGRect(x: profileContainer.frame.width - 35, y: 0, width: 35, height: 35)
@@ -95,6 +98,9 @@ class ViewController: UIViewController {
         // Add profile container to parent view
         self.view.addSubview(profileContainer)
         
+        // Create UIScrollView
+        setupScrollView()
+        
         // Create chayns label
         let chaynsLabel:UILabel = UILabel()
         chaynsLabel.text = "chayns"
@@ -103,8 +109,8 @@ class ViewController: UIViewController {
         chaynsLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
         chaynsLabel.frame = CGRect(x: 0, y: profileContainer.frame.maxY + 65, width: self.view.frame.width, height: 50)
         
-        // Add chayns label to parent view
-        self.view.addSubview(chaynsLabel)
+        // Add chayns label to scroll content view
+        contentView.addSubview(chaynsLabel)
 
         // Configure searchbar
         searchBar.barStyle = UIBarStyle.black
@@ -117,21 +123,21 @@ class ViewController: UIViewController {
         searchBar.backgroundColor = .black
         searchBar.tintColor = .systemBlue /* cursor color */
         
-        // Accessing the textfield inside the search bar to change the text color
+        // Accessing the tex tfield inside the search bar to change the text color
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = .white
         
-        // Add search bar to parent view
-        self.view.addSubview(searchBar)
+        // Add search bar to scroll content view
+        contentView.addSubview(searchBar)
 
-        // Create sites container
+        // Create sites container (still needs to be responsive)
         let sitesContainer:UIView = UIView()
-        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: 475)
+        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: self.view.frame.size.height)
 
         var marginBetween = 0
         var marginTop = 0
 
-        for i in 0...15 {
+        for i in 0...23 {
             let icon = UIImage(named: "icon\(i + 1)")
             
             // Create new container for the site icon & name
@@ -173,24 +179,8 @@ class ViewController: UIViewController {
             }
         }
         
-        // Add sites container to parent view
-        self.view.addSubview(sitesContainer)
-        
-//        // QR scanner above tab bar
-//        let scanner:UIView = UIView()
-//        scanner.backgroundColor = .systemGray6
-//
-//        // x: left border of the screen, y: minY of tabbar + height, width: width of screen, height: 25
-//        scanner.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.maxY - 109, width: self.view.frame.width, height: 25)
-//        self.view.addSubview(scanner)
-//
-//        // QR scanner grabber
-//        let scannerGrab:UIView = UIView()
-//        scannerGrab.backgroundColor = .gray
-//        scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
-//        scannerGrab.layer.cornerRadius = 2
-//        scannerGrab.clipsToBounds = true
-//        scanner.addSubview(scannerGrab)
+        // Add sites container to scroll content view
+        contentView.addSubview(sitesContainer)
     }
     
     @objc func viewClick() {
@@ -201,5 +191,33 @@ class ViewController: UIViewController {
         let webView = WebViewController()
         webView.topInset = topInset
         self.navigationController?.pushViewController(webView, animated: true)
+    }
+    
+    func setupScrollView() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        // scrollView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        
+        // Add scroll view to main view
+        self.view.addSubview(scrollView)
+        
+        // Add content to scrollview
+        scrollView.addSubview(contentView)
+        
+        // Constraints
+        scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
 }
