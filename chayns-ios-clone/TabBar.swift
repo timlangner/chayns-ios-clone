@@ -15,7 +15,6 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
         bottomSafeAreaInset = window.safeAreaInsets.bottom
-        print("bottomPadding", bottomSafeAreaInset)
     }
     
     override func viewDidLoad() {

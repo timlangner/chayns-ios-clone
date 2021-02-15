@@ -49,16 +49,8 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         // Get main window for save view
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene})
-            .compactMap({$0})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
-        if let key = keyWindow {
-            topInset = key.safeAreaInsets.top
-            
-        }
+        let window = UIApplication.shared.windows[0]
+        topInset = window.safeAreaInsets.top
         
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
         
@@ -76,15 +68,8 @@ class ViewController: UIViewController {
         viewClickTapGesture.addTarget(self, action: #selector(viewClick))
         
         // Get main window for save view
-        let keyWindow = UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene})
-            .compactMap({$0})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
-        if let key = keyWindow {
-            topInset = key.safeAreaInsets.top
-        }
+        let window = UIApplication.shared.windows[0]
+        topInset = window.safeAreaInsets.top
 
         // Create profile container
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
