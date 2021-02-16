@@ -40,10 +40,9 @@ extension UIColor {
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
-    // Create search bar
-    let searchBar:UISearchBar = UISearchBar()
-    
     var topInset:CGFloat = 0.0
+    
+    let searchBar:UISearchBar = UISearchBar()
     
     let blurContainer:UIView = UIView()
     
@@ -71,18 +70,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add effect to blur effect view
-        blurredEffectView.effect = blurEffect
-        
+        // In order to use scrollview delegate methods
         self.scrollView.delegate = self
         
         // Hide navigation bar since it's adding wrong space on app start
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        // Change background color of view
+        // Change background color
         self.view.backgroundColor = UIColor(hexString: "#131212")
         
-        // Add tap gesture to view
+        // Add tap gesture to view to disable keyboard when clicking out of the searchbar
         let viewClickTapGesture = UITapGestureRecognizer()
         scrollView.addGestureRecognizer(viewClickTapGesture)
         viewClickTapGesture.addTarget(self, action: #selector(viewClick))
@@ -90,11 +87,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
         topInset = window.safeAreaInsets.top
-        
-        // Configure blur container
-        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: 110)
-        blurContainer.layer.zPosition = 1
-        blurredEffectView.frame = blurContainer.bounds
 
         // Create profile container
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
@@ -117,6 +109,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         profileContainer.addSubview(profileName)
         profileContainer.addSubview(profilePictureView)
         
+        // Configure blur container
+        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: 110)
+        blurContainer.layer.zPosition = 1
+        blurredEffectView.frame = blurContainer.bounds
+        blurredEffectView.effect = blurEffect
+        
+        // Add profile to blur container
         blurContainer.addSubview(profileContainer)
         
         // Add blur container to parent view
@@ -135,7 +134,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         chaynsLabel.textColor = .white
         chaynsLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
         chaynsLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
-        // chaynsLabel.layer.zPosition = -1
         
         // Add chayns label to scroll content view
         contentView.addSubview(chaynsLabel)
@@ -151,14 +149,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         searchBar.backgroundColor = .black
         searchBar.tintColor = .systemBlue /* cursor color */
         
-        // Accessing the tex tfield inside the search bar to change the text color
+        // Accessing the textfield inside the search bar to change the text color
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideSearchBar?.textColor = .white
         
         // Add search bar to scroll content view
         contentView.addSubview(searchBar)
 
-        // Create sites container (still needs to be responsive)
+        // Create sites container
         let sitesContainer:UIView = UIView()
         sitesContainer.frame = CGRect(x: self.view.frame.minX + 36, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 20, height: self.view.frame.size.height)
 
@@ -199,7 +197,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             // Check if a row has 4 site containers and if so update the top margin & reset the horizontally margin
             if ((i + 1) % 4 == 0) {
-                marginTop += 120
+                marginTop += 120 /* 120 pixels space between icons vertically */
                 marginBetween = 0
             } else {
                 // Update margin | 60px (the width of the container + 20px as margin between the boxes)
@@ -213,24 +211,23 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func viewClick() {
         searchBar.endEditing(true) /* close keyboard  */
-        print("view clicked")
     }
     
     @objc func siteClick() {
-        print("clicked")
         let webView = WebViewController()
         webView.topInset = topInset
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
     func setupScrollView() {
-        
-        scrollView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        print("frame height", self.view.frame.size.height)
-        scrollView.contentSize.height = self.view.frame.size.height + (self.view.frame.size.height / 4)
-        scrollView.showsVerticalScrollIndicator = false
-        
+        scrollView.frame = self.view.frame
         contentView.frame = CGRect(x: self.view.frame.minX, y: profileContainer.frame.maxY + 20, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        
+        // Configure content size height which needs to be as heigh as all the content is
+        scrollView.contentSize.height = self.view.frame.size.height + (self.view.frame.size.height / 4)
+        
+        // Disable vertical scroll bar
+        scrollView.showsVerticalScrollIndicator = false
         
         // Add scroll view to main view
         self.view.addSubview(scrollView)
@@ -240,15 +237,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // Scrolling
-        
         // Check scroll position | -47.0 = original root position
-        
         if (scrollView.bounds.minY <= -47.0) {
             blurFadeOut()
         } else {
             if (!isAnimated) {
-                print("inside")
                 blurredEffectView.removeFromSuperview()
                 blurContainer.addSubview(blurredEffectView)
                 
