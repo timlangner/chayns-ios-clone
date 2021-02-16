@@ -63,6 +63,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hide navigation bar since it's adding wrong space on app start
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         // Change background color of view
         self.view.backgroundColor = UIColor(hexString: "#131212")
         
@@ -112,7 +115,7 @@ class ViewController: UIViewController {
         chaynsLabel.textColor = .white
         chaynsLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
         chaynsLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
-        chaynsLabel.layer.zPosition = -1
+        // chaynsLabel.layer.zPosition = -1
         
         // Add chayns label to scroll content view
         contentView.addSubview(chaynsLabel)
@@ -203,11 +206,12 @@ class ViewController: UIViewController {
     func setupScrollView() {
         
         scrollView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        scrollView.contentSize.height = self.view.frame.size.height + 1
+        scrollView.contentSize.height = self.view.frame.size.height + 50
+        scrollView.showsVerticalScrollIndicator = false
         
         print("profileContainer", profileContainer.frame.height)
         
-        contentView.frame = CGRect(x: self.view.frame.minX, y: 20, width: self.view.frame.size.width, height: self.view.frame.size.height + 10)
+        contentView.frame = CGRect(x: self.view.frame.minX, y: profileContainer.frame.maxY, width: self.view.frame.size.width, height: self.view.frame.size.height + 10)
         
         // Add scroll view to main view
         self.view.addSubview(scrollView)
