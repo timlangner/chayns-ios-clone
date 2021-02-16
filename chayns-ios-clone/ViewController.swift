@@ -56,6 +56,7 @@ class ViewController: UIViewController {
         let window = UIApplication.shared.windows[0]
         topInset = window.safeAreaInsets.top
         
+        // Set margin from safe area for profile container
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
     }
     
@@ -98,6 +99,9 @@ class ViewController: UIViewController {
         // Add profile container to parent view
         self.view.addSubview(profileContainer)
         
+        // Bring profileContainer on top so the other content scrolls behind it
+        profileContainer.layer.zPosition = 1
+        
         // Create UIScrollView
         setupScrollView()
         
@@ -107,7 +111,8 @@ class ViewController: UIViewController {
         chaynsLabel.textAlignment = .center
         chaynsLabel.textColor = .white
         chaynsLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
-        chaynsLabel.frame = CGRect(x: 0, y: profileContainer.frame.maxY + 65, width: self.view.frame.width, height: 50)
+        chaynsLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
+        chaynsLabel.layer.zPosition = -1
         
         // Add chayns label to scroll content view
         contentView.addSubview(chaynsLabel)
@@ -185,39 +190,29 @@ class ViewController: UIViewController {
     
     @objc func viewClick() {
         searchBar.endEditing(true) /* close keyboard  */
+        print("view clicked")
     }
     
     @objc func siteClick() {
+        print("clicked")
         let webView = WebViewController()
         webView.topInset = topInset
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
     func setupScrollView() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        // scrollView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        
+        scrollView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        scrollView.contentSize.height = self.view.frame.size.height + 1
+        
+        print("profileContainer", profileContainer.frame.height)
+        
+        contentView.frame = CGRect(x: self.view.frame.minX, y: 20, width: self.view.frame.size.width, height: self.view.frame.size.height + 10)
         
         // Add scroll view to main view
         self.view.addSubview(scrollView)
         
         // Add content to scrollview
         scrollView.addSubview(contentView)
-        
-        // Constraints
-        scrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
 }
