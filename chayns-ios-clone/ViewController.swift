@@ -45,8 +45,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     var topInset:CGFloat = 0.0
     
-    var scrollAmount = 0
-    
     let blurContainer:UIView = UIView()
     
     let profileContainer:UIView = UIView()
@@ -54,8 +52,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let scrollView:UIScrollView = UIScrollView()
     
     let contentView:UIView = UIView()
-    
-    var lastKnownContentOffset:CGFloat = 0.0
     
     let blurEffect = UIBlurEffect(style: .dark)
     
@@ -94,7 +90,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         topInset = window.safeAreaInsets.top
         
         // Configure blur container
-        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: 100)
+        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: 110)
         blurContainer.layer.zPosition = 1
         blurredEffectView.frame = blurContainer.bounds
 
@@ -244,16 +240,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Scrolling
-        scrollAmount += 1
         
-        if (scrollAmount > 1) {
+        // Check scroll position | -47.0 = original root position
+        
+        if (scrollView.bounds.minY <= -47.0) {
+            blurredEffectView.removeFromSuperview()
+        } else {
             blurredEffectView.removeFromSuperview()
             blurContainer.addSubview(blurredEffectView)
         }
     }
     
     func scrollViewDidEndDragging(_ scrollViewVar: UIScrollView, willDecelerate decelerate: Bool) {
-        // print("scrolling ended")
-        // blurredEffectView.removeFromSuperview()
+        // Released scrolling
     }
 }
