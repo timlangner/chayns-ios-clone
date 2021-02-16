@@ -110,7 +110,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         profileContainer.addSubview(profilePictureView)
         
         // Configure blur container
-        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: 110)
+        print("topInset", topInset)
+        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: topInset + 60)
         blurContainer.layer.zPosition = 1
         blurredEffectView.frame = blurContainer.bounds
         blurredEffectView.effect = blurEffect
