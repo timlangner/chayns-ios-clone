@@ -57,6 +57,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     let blurredEffectView = UIVisualEffectView()
     
+    var isAnimated = false
+    
     override func viewDidLayoutSubviews() {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
@@ -143,7 +145,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         searchBar.placeholder = "Finden"
         searchBar.frame = CGRect(x: self.view.frame.minX + 25, y: chaynsLabel.frame.maxY + 40, width: self.view.frame.width - 50, height: 40)
         searchBar.layer.borderWidth = 0.5
-        searchBar.layer.borderColor = UIColor.gray.cgColor
+        searchBar.layer.borderColor = UIColor.darkGray.cgColor
         searchBar.layer.cornerRadius = 3
         searchBar.backgroundImage = UIImage() /* remove shadow borders */
         searchBar.backgroundColor = .black
@@ -158,7 +160,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
         // Create sites container (still needs to be responsive)
         let sitesContainer:UIView = UIView()
-        sitesContainer.frame = CGRect(x: self.view.frame.minX + 45, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 40, height: self.view.frame.size.height)
+        sitesContainer.frame = CGRect(x: self.view.frame.minX + 36, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 20, height: self.view.frame.size.height)
 
         var marginBetween = 0
         var marginTop = 0
@@ -197,11 +199,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             // Check if a row has 4 site containers and if so update the top margin & reset the horizontally margin
             if ((i + 1) % 4 == 0) {
-                marginTop += 100
+                marginTop += 120
                 marginBetween = 0
             } else {
                 // Update margin | 60px (the width of the container + 20px as margin between the boxes)
-                marginBetween += 80
+                marginBetween += 85
             }
         }
         
@@ -224,12 +226,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     func setupScrollView() {
         
         scrollView.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.size.width, height: self.view.frame.size.height)
-        scrollView.contentSize.height = self.view.frame.size.height + 50
+        print("frame height", self.view.frame.size.height)
+        scrollView.contentSize.height = self.view.frame.size.height + (self.view.frame.size.height / 4)
         scrollView.showsVerticalScrollIndicator = false
         
-        print("profileContainer", profileContainer.frame.height)
-        
-        contentView.frame = CGRect(x: self.view.frame.minX, y: profileContainer.frame.maxY, width: self.view.frame.size.width, height: self.view.frame.size.height + 10)
+        contentView.frame = CGRect(x: self.view.frame.minX, y: profileContainer.frame.maxY + 20, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
         // Add scroll view to main view
         self.view.addSubview(scrollView)
@@ -244,14 +245,33 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // Check scroll position | -47.0 = original root position
         
         if (scrollView.bounds.minY <= -47.0) {
-            blurredEffectView.removeFromSuperview()
+            blurFadeOut()
         } else {
+            if (!isAnimated) {
+                print("inside")
+                blurredEffectView.removeFromSuperview()
+                blurContainer.addSubview(blurredEffectView)
+                
+                blurredEffectView.alpha = 0
+                blurFadeIn()
+                isAnimated = true
+            }
             blurredEffectView.removeFromSuperview()
             blurContainer.addSubview(blurredEffectView)
         }
     }
     
-    func scrollViewDidEndDragging(_ scrollViewVar: UIScrollView, willDecelerate decelerate: Bool) {
-        // Released scrolling
+    func blurFadeIn() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.blurredEffectView.alpha = 1
+        })
+    }
+    
+    func blurFadeOut() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.blurredEffectView.alpha = 0
+        }, completion: { finished in
+            self.isAnimated = false
+        })
     }
 }
