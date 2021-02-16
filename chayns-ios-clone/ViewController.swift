@@ -38,18 +38,28 @@ extension UIColor {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
     // Create search bar
     let searchBar:UISearchBar = UISearchBar()
     
     var topInset:CGFloat = 0.0
     
+    var scrollAmount = 0
+    
+    let blurContainer:UIView = UIView()
+    
     let profileContainer:UIView = UIView()
     
     let scrollView:UIScrollView = UIScrollView()
     
     let contentView:UIView = UIView()
+    
+    var lastKnownContentOffset:CGFloat = 0.0
+    
+    let blurEffect = UIBlurEffect(style: .dark)
+    
+    let blurredEffectView = UIVisualEffectView()
     
     override func viewDidLayoutSubviews() {
         // Get main window for save view
@@ -62,6 +72,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add effect to blur effect view
+        blurredEffectView.effect = blurEffect
+        
+        self.scrollView.delegate = self
         
         // Hide navigation bar since it's adding wrong space on app start
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -77,10 +92,14 @@ class ViewController: UIViewController {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
         topInset = window.safeAreaInsets.top
+        
+        // Configure blur container
+        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: 100)
+        blurContainer.layer.zPosition = 1
+        blurredEffectView.frame = blurContainer.bounds
 
         // Create profile container
         profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
-
         // Create profile name
         let profileName:UILabel = UILabel()
         profileName.text = "Tim Langner"
@@ -95,15 +114,18 @@ class ViewController: UIViewController {
         profilePictureView.clipsToBounds = true
         profilePictureView.image = profilePicture
         profilePictureView.frame = CGRect(x: profileContainer.frame.width - 35, y: 0, width: 35, height: 35)
+        
         // Add profile name & picture to profile container
         profileContainer.addSubview(profileName)
         profileContainer.addSubview(profilePictureView)
         
-        // Add profile container to parent view
-        self.view.addSubview(profileContainer)
+        blurContainer.addSubview(profileContainer)
+        
+        // Add blur container to parent view
+        self.view.addSubview(blurContainer)
         
         // Bring profileContainer on top so the other content scrolls behind it
-        profileContainer.layer.zPosition = 1
+        profileContainer.layer.zPosition = 2
         
         // Create UIScrollView
         setupScrollView()
@@ -218,5 +240,20 @@ class ViewController: UIViewController {
         
         // Add content to scrollview
         scrollView.addSubview(contentView)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Scrolling
+        scrollAmount += 1
+        
+        if (scrollAmount > 1) {
+            blurredEffectView.removeFromSuperview()
+            blurContainer.addSubview(blurredEffectView)
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollViewVar: UIScrollView, willDecelerate decelerate: Bool) {
+        // print("scrolling ended")
+        // blurredEffectView.removeFromSuperview()
     }
 }
