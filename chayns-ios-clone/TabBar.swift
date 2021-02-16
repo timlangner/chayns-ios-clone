@@ -43,6 +43,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         scannerGrab.clipsToBounds = true
         scanner.addSubview(scannerGrab)
         
+        // To use UITabBarControllerDelegate
         self.delegate = self
     }
     
