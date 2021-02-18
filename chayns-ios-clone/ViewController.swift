@@ -48,9 +48,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     let profileContainer:UIView = UIView()
     
+    let sitesContainer:UIView = UIView()
+    
     let scrollView:UIScrollView = UIScrollView()
     
     let contentView:UIView = UIView()
+    
+    var rootScrollPosition:CGFloat = 0.0
+    
+    var scrollEventCount:Int = 0
     
     let blurEffect = UIBlurEffect(style: .dark)
     
@@ -124,9 +130,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // Bring profileContainer on top so the other content scrolls behind it
         profileContainer.layer.zPosition = 2
         
-        // Create UIScrollView
-        setupScrollView()
-        
         // Create chayns label
         let chaynsLabel:UILabel = UILabel()
         chaynsLabel.text = "chayns"
@@ -156,8 +159,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // Add search bar to scroll content view
         contentView.addSubview(searchBar)
 
-        // Create sites container
-        let sitesContainer:UIView = UIView()
+        // Configure sites container
         sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: self.view.frame.size.height)
 
         var marginBetween = 0
@@ -207,6 +209,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         // Add sites container to scroll content view
         contentView.addSubview(sitesContainer)
+        
+        // Create UIScrollView
+        setupScrollView()
     }
     
     @objc func viewClick() {
@@ -223,8 +228,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         scrollView.frame = self.view.frame
         contentView.frame = CGRect(x: self.view.frame.minX, y: profileContainer.frame.maxY + 20, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
-        // Configure content size height which needs to be as heigh as all the content is
-        scrollView.contentSize.height = self.view.frame.size.height + (self.view.frame.size.height / 4)
+        // Configure content size height which needs to be as high as all the content is + extra margin so its above the tabbar
+        scrollView.contentSize.height = sitesContainer.frame.maxY + 50
         
         // Disable vertical scroll bar
         scrollView.showsVerticalScrollIndicator = false
@@ -237,8 +242,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // Check scroll position | -47.0 = original root position
-        if (scrollView.bounds.minY <= -47.0) {
+        // Check scroll position
+        scrollEventCount += 1
+        
+        // Only set rootScrollPosition once
+        if (scrollEventCount == 1) {
+            rootScrollPosition = scrollView.bounds.minY
+        }
+        
+        if (scrollView.bounds.minY <= rootScrollPosition) {
             blurFadeOut()
         } else {
             if (!isAnimated) {
