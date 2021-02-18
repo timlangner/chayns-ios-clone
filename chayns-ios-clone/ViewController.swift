@@ -110,8 +110,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         profileContainer.addSubview(profilePictureView)
         
         // Configure blur container
-        print("topInset", topInset)
-        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: topInset + 60)
+        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: topInset + (profileContainer.frame.size.height + 25))
         blurContainer.layer.zPosition = 1
         blurredEffectView.frame = blurContainer.bounds
         blurredEffectView.effect = blurEffect
@@ -159,7 +158,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
         // Create sites container
         let sitesContainer:UIView = UIView()
-        sitesContainer.frame = CGRect(x: self.view.frame.minX + 36, y: searchBar.frame.maxY + 30, width: searchBar.frame.size.width - 20, height: self.view.frame.size.height)
+        sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: self.view.frame.size.height)
 
         var marginBetween = 0
         var marginTop = 0
@@ -201,7 +200,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 marginTop += 120 /* 120 pixels space between icons vertically */
                 marginBetween = 0
             } else {
-                // Update margin | 60px (the width of the container + 20px as margin between the boxes)
+                // Update margin | 60px (the width of the container + 25px as margin between the boxes)
                 marginBetween += 85
             }
         }
