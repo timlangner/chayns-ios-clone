@@ -58,6 +58,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollEventCount:Int = 0
     
+    var scannerMinY:CGFloat = 0.0
+    
     let blurEffect = UIBlurEffect(style: .dark)
     
     let blurredEffectView = UIVisualEffectView()
@@ -160,7 +162,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         contentView.addSubview(searchBar)
 
         // Configure sites container
-        sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: self.view.frame.size.height)
+        sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: 750)
 
         var marginBetween = 0
         var marginTop = 0
@@ -229,7 +231,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         contentView.frame = CGRect(x: self.view.frame.minX, y: profileContainer.frame.maxY + 20, width: self.view.frame.size.width, height: self.view.frame.size.height)
         
         // Configure content size height which needs to be as high as all the content is + extra margin so its above the tabbar
-        scrollView.contentSize.height = sitesContainer.frame.maxY + 50
+        scrollView.contentSize.height = sitesContainer.frame.maxY + (self.view.frame.maxY - scannerMinY)
         
         // Disable vertical scroll bar
         scrollView.showsVerticalScrollIndicator = false

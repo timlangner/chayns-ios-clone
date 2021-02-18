@@ -43,6 +43,12 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         scannerGrab.clipsToBounds = true
         scanner.addSubview(scannerGrab)
         
+        // Pass scanner y position to view controller to calculate the right scrollView contentSize
+        if let mainView =  viewControllers?.first?.children.first as? ViewController {
+            mainView.scannerMinY = scanner.frame.minY
+        }
+       
+        
         // To use UITabBarControllerDelegate
         self.delegate = self
     }
