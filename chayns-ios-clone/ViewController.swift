@@ -233,7 +233,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func siteClick() {
         let webView = WebViewController()
-        webView.topInset = safeAreaInsets.top
+        webView.safeAreaInsets = safeAreaInsets
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
@@ -300,10 +300,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 0.1 seconds delay
                 print("currentView", self.view.frame)
-                
-                // Reload tabbar controller
-                let tabBarController = TabBar()
-                tabBarController.repositionScanner()
                 
                 // Reload view
                 self.viewDidLoad()
