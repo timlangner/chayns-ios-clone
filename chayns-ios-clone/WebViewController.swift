@@ -50,8 +50,9 @@ class WebViewController: UIViewController {
             webView = WKWebView(frame: CGRect(x: self.view.frame.minX, y: safeAreaInsets.top, width: self.view.frame.width, height: self.view.frame.height - safeAreaInsets.top), configuration: config)
             overlay.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: safeAreaInsets.top)
         } else {
-            webView = WKWebView(frame: CGRect(x: self.view.frame.minX, y: safeAreaInsets.top, width: self.view.frame.width - safeAreaInsets.left, height: self.view.frame.height), configuration: config)
+            print("landscape view")
             overlay.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: safeAreaInsets.left, height: self.view.frame.height)
+            webView = WKWebView(frame: CGRect(x: self.view.frame.minX + self.overlay.frame.maxX, y: self.view.frame.minY, width: self.view.frame.width - safeAreaInsets.left, height: self.view.frame.height), configuration: config)
         }
         overlay.backgroundColor = .white
         self.view.addSubview(overlay)
