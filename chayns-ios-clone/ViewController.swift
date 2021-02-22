@@ -174,8 +174,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
         // Configure sites container
         sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: 750)
-        sitesContainer.layer.borderWidth = 1
-        sitesContainer.layer.borderColor = UIColor.red.cgColor
         
         var marginBetween = 0
         var marginTop = 0
@@ -303,15 +301,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 0.1 seconds delay
                 print("currentView", self.view.frame)
                 
+                // Reload tabbar controller
+                let tabBarController = TabBar()
+                tabBarController.repositionScanner(isLandScape: true)
+                
                 // Reload view
                 self.viewDidLoad()
                 
                 // Remove old sites container
                 self.sitesContainer.removeFromSuperview()
-                
-                // Regenerate sites container with icons
-                self.newSitesContainer.layer.borderColor = UIColor.blue.cgColor
-                self.newSitesContainer.layer.borderWidth = 1
                 
                 var marginBetween = 0
                 var marginTop = 0
@@ -372,14 +370,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     // Adjust sitesContainer width for bigger space between icons
                     self.newSitesContainer.frame = CGRect(x: self.searchBar.frame.minX + 50, y: self.searchBar.frame.maxY + 30, width: self.searchBar.frame.width - 100, height: 750)
                     
-                    self.scrollView.contentSize.height = self.newSitesContainer.frame.maxY + (self.view.frame.maxY - self.scannerMinY)
+                    // Adjust scrollheight
+                    self.scrollView.contentSize.height = self.newSitesContainer.frame.maxY + (self.view.frame.maxY - 360)
                 }
             }
         } else {
             print("Device is in portrait mode", contentView.frame)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 0.1 seconds delay
-                print("currentView", self.view.frame)
                 
                 // Remove sites container for the landing orientation
                 self.newSitesContainer.removeFromSuperview()
@@ -395,6 +393,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         determineMyDeviceOrientation()
     }
 }

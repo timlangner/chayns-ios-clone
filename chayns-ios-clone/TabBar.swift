@@ -10,11 +10,14 @@ import Foundation
 
 class TabBar: UITabBarController, UITabBarControllerDelegate {
     var bottomSafeAreaInset:CGFloat = 0.0
+    let scanner:UIView = UIView()
+    let scannerGrab:UIView = UIView()
     
     func getSafeAreaInsets() {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
         bottomSafeAreaInset = window.safeAreaInsets.bottom
+        print("bottomSafeArea", bottomSafeAreaInset)
     }
     
     override func viewDidLoad() {
@@ -28,15 +31,13 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         setupVCs() /* Configure Tab Items */
         
         // QR scanner above tab bar
-        let scanner:UIView = UIView()
         scanner.backgroundColor = .systemGray6
         
-        // x: left border of the screen, y: minY of tabbar + height, width: width of screen, height: 25
+        // x: left border of the screen, y: minY of tabbar - height, width: width of screen, height: 25
         scanner.frame = CGRect(x: self.view.frame.minX, y: (tabBar.frame.minY - 25) - bottomSafeAreaInset , width: self.view.frame.width, height: 25)
         self.view.addSubview(scanner)
         
         // QR scanner grabber
-        let scannerGrab:UIView = UIView()
         scannerGrab.backgroundColor = .gray
         scannerGrab.frame = CGRect(x: scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
         scannerGrab.layer.cornerRadius = 2
@@ -48,7 +49,6 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
             mainView.scannerMinY = scanner.frame.minY
         }
        
-        
         // To use UITabBarControllerDelegate
         self.delegate = self
     }
@@ -100,4 +100,23 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         self.navigationController?.navigationBar.barStyle = style
         UITabBar.appearance().barTintColor = .systemBackground /* override color scheme */
     }
+    
+    func repositionScanner(isLandScape: Bool) {
+        print("im repositioning")
+        self.scanner.frame = CGRect(x: self.view.frame.minX, y: (self.tabBar.frame.minY - 25), width: self.view.frame.width, height: 25)
+        self.scannerGrab.frame = CGRect(x: self.scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { context in
+            // Animation starting
+            self.scanner.layer.opacity = 0
+        } completion: { context in
+            // Animation finished
+            self.repositionScanner(isLandScape: true)
+            self.scanner.layer.opacity = 1
+        }
+    }
+    
 }
