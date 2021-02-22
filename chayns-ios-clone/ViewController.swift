@@ -303,7 +303,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 
                 // Reload tabbar controller
                 let tabBarController = TabBar()
-                tabBarController.repositionScanner(isLandScape: true)
+                tabBarController.repositionScanner()
                 
                 // Reload view
                 self.viewDidLoad()
@@ -360,6 +360,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 
                 // Wait until the view is loaded to modify existing elements
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 2 seconds delay
+                    // Remove profile & bl
                     
                     // Remove profile & blur container
                     self.blurContainer.removeFromSuperview()

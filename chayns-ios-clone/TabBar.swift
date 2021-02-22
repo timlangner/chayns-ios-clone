@@ -101,8 +101,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
         UITabBar.appearance().barTintColor = .systemBackground /* override color scheme */
     }
     
-    func repositionScanner(isLandScape: Bool) {
-        print("im repositioning")
+    func repositionScanner() {
         self.scanner.frame = CGRect(x: self.view.frame.minX, y: (self.tabBar.frame.minY - 25), width: self.view.frame.width, height: 25)
         self.scannerGrab.frame = CGRect(x: self.scanner.frame.maxX / 2 - 21.75, y: 12, width: 42.5, height: 4)
     }
@@ -114,7 +113,7 @@ class TabBar: UITabBarController, UITabBarControllerDelegate {
             self.scanner.layer.opacity = 0
         } completion: { context in
             // Animation finished
-            self.repositionScanner(isLandScape: true)
+            self.repositionScanner()
             self.scanner.layer.opacity = 1
         }
     }
