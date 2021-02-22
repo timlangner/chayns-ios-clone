@@ -38,6 +38,15 @@ extension UIColor {
     }
 }
 
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+}
+
 class ViewController: UIViewController, UIScrollViewDelegate {
     
     var safeAreaInsets:UIEdgeInsets!
@@ -171,6 +180,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         // Add search bar to scroll content view
         contentView.addSubview(searchBar)
+        
+//        // Scanner button
+//        let qrButton = UIButton()
+//        qrButton.frame = CGRect(x: searchBar.frame.maxX - searchBar.frame.height, y: searchBar.frame.minY, width: searchBar.frame.height, height: searchBar.frame.height)
+//        qrButton.backgroundColor = .white
+//        qrButton.roundCorners(corners: [.topRight, .bottomRight], radius: 3)
+//        
+//        let qrIcon = UIImageView()
+//        qrIcon.image = UIImage(named: "qr-icon")
+//        qrIcon.frame = CGRect(x: 0, y: 0, width: qrButton.frame.width, height: qrButton.frame.height)
+//        qrButton.addSubview(qrIcon)
+//        contentView.addSubview(qrButton)
 
         // Configure sites container
         sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: 750)
