@@ -40,7 +40,9 @@ extension UIColor {
 
 class ViewController: UIViewController, UIScrollViewDelegate {
     
-    var topInset:CGFloat = 0.0
+    var safeAreaInsets:UIEdgeInsets!
+    
+    var currentSpace:Int = 25
     
     let searchBar:UISearchBar = UISearchBar()
     
@@ -48,7 +50,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     let profileContainer:UIView = UIView()
     
+    let chaynsLabel:UILabel = UILabel()
+    
     let sitesContainer:UIView = UIView()
+    
+    let newSitesContainer:UIView = UIView()
     
     let scrollView:UIScrollView = UIScrollView()
     
@@ -69,10 +75,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
-        topInset = window.safeAreaInsets.top
+        safeAreaInsets = window.safeAreaInsets
         
         // Set margin from safe area for profile container
-        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
+        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: safeAreaInsets.top + 10, width: 130, height: 35)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        determineMyDeviceOrientation()
     }
     
     override func viewDidLoad() {
@@ -94,10 +106,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         
         // Get main window for save view
         let window = UIApplication.shared.windows[0]
-        topInset = window.safeAreaInsets.top
+        safeAreaInsets = window.safeAreaInsets
 
         // Create profile container
-        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: topInset + 10, width: 130, height: 35)
+        profileContainer.frame = CGRect(x: self.view.frame.maxX - 150, y: safeAreaInsets.top + 10, width: 130, height: 35)
         // Create profile name
         let profileName:UILabel = UILabel()
         profileName.text = "Tim Langner"
@@ -118,7 +130,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         profileContainer.addSubview(profilePictureView)
         
         // Configure blur container
-        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: topInset + (profileContainer.frame.size.height + 25))
+        blurContainer.frame = CGRect(x: self.view.frame.minX, y: self.view.frame.minY, width: self.view.frame.width, height: safeAreaInsets.top + (profileContainer.frame.size.height + 25))
         blurContainer.layer.zPosition = 1
         blurredEffectView.frame = blurContainer.bounds
         blurredEffectView.effect = blurEffect
@@ -132,8 +144,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // Bring profileContainer on top so the other content scrolls behind it
         profileContainer.layer.zPosition = 2
         
-        // Create chayns label
-        let chaynsLabel:UILabel = UILabel()
+        // Configure chayns label
         chaynsLabel.text = "chayns"
         chaynsLabel.textAlignment = .center
         chaynsLabel.textColor = .white
@@ -163,10 +174,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
         // Configure sites container
         sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: 750)
-
+        sitesContainer.layer.borderWidth = 1
+        sitesContainer.layer.borderColor = UIColor.red.cgColor
+        
         var marginBetween = 0
         var marginTop = 0
-
+        
         for i in 0...23 {
             let icon = UIImage(named: "icon\(i + 1)")
             
@@ -205,7 +218,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                 marginBetween = 0
             } else {
                 // Update margin | 60px (the width of the container + 25px as margin between the boxes)
-                marginBetween += 85
+                marginBetween += (60 + currentSpace)
             }
         }
         
@@ -222,7 +235,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func siteClick() {
         let webView = WebViewController()
-        webView.topInset = topInset
+        webView.topInset = safeAreaInsets.top
         self.navigationController?.pushViewController(webView, animated: true)
     }
     
@@ -280,5 +293,108 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         }, completion: { finished in
             self.isAnimated = false
         })
+    }
+    
+    func determineMyDeviceOrientation()
+    {
+        if UIDevice.current.orientation.isLandscape {
+            print("Device is in landscape mode", contentView.frame)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 0.1 seconds delay
+                print("currentView", self.view.frame)
+                
+                // Reload view
+                self.viewDidLoad()
+                
+                // Remove old sites container
+                self.sitesContainer.removeFromSuperview()
+                
+                // Regenerate sites container with icons
+                self.newSitesContainer.layer.borderColor = UIColor.blue.cgColor
+                self.newSitesContainer.layer.borderWidth = 1
+                
+                var marginBetween = 0
+                var marginTop = 0
+                
+                for i in 0...23 {
+                    let icon = UIImage(named: "icon\(i + 1)")
+                    
+                    // Create new container for the site icon & name
+                    let siteContainer:UIView = UIView()
+                    siteContainer.frame = CGRect(x: marginBetween, y: marginTop, width: 60, height: 80)
+                    
+                    // Create a new UIImageView as a container for the image
+                    let imageView:UIImageView = UIImageView()
+                    imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+                    imageView.image = icon
+                    
+                    // Create label for the site name
+                    let siteName:UILabel = UILabel()
+                    siteName.text = "Labs"
+                    siteName.font = UIFont.systemFont(ofSize: 11)
+                    siteName.textAlignment = .center
+                    siteName.textColor = .white
+                    siteName.frame = CGRect(x: 0, y: imageView.frame.maxY, width: imageView.frame.width, height: 25)
+
+                    // Add image and label to the site container
+                    siteContainer.addSubview(imageView)
+                    siteContainer.addSubview(siteName)
+                    
+                    // Add tap gesture to site container
+                    let siteClickTapGesture = UITapGestureRecognizer()
+                    siteContainer.addGestureRecognizer(siteClickTapGesture)
+                    siteClickTapGesture.addTarget(self, action: #selector(self.siteClick))
+                    
+                    // Add site to sites container
+                    self.newSitesContainer.addSubview(siteContainer)
+                    
+                    // Check if a row has 4 site containers and if so update the top margin & reset the horizontally margin
+                    if ((i + 1) % 4 == 0) {
+                        marginTop += 120 /* 120 pixels space between icons vertically */
+                        marginBetween = 0
+                    } else {
+                        // Update margin | 60px (the width of the container + 100px as margin between the boxes)
+                        marginBetween += (60 + 100)
+                    }
+                }
+                
+                self.contentView.addSubview(self.newSitesContainer)
+                
+                // Wait until the view is loaded to modify existing elements
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 2 seconds delay
+                    
+                    // Remove profile & blur container
+                    self.blurContainer.removeFromSuperview()
+                    
+                    // Resize searchbar
+                    self.searchBar.frame = CGRect(x: self.view.frame.minX + 100, y: self.chaynsLabel.frame.maxY + 40, width: self.view.frame.width - 200, height: 40)
+                    
+                    // Adjust sitesContainer width for bigger space between icons
+                    self.newSitesContainer.frame = CGRect(x: self.searchBar.frame.minX + 50, y: self.searchBar.frame.maxY + 30, width: self.searchBar.frame.width - 100, height: 750)
+                    
+                    self.scrollView.contentSize.height = self.newSitesContainer.frame.maxY + (self.view.frame.maxY - self.scannerMinY)
+                }
+            }
+        } else {
+            print("Device is in portrait mode", contentView.frame)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { // 0.1 seconds delay
+                print("currentView", self.view.frame)
+                
+                // Remove sites container for the landing orientation
+                self.newSitesContainer.removeFromSuperview()
+                
+                // Reload view
+                self.viewDidLoad()
+                
+                // Add profile & blur container
+                self.view.addSubview(self.blurContainer)
+                
+            }
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        determineMyDeviceOrientation()
     }
 }
