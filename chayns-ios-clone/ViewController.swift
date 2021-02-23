@@ -55,6 +55,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     let searchBar:UISearchBar = UISearchBar()
     
+    let qrButton = UIButton()
+    
     let blurContainer:UIView = UIView()
     
     let profileContainer:UIView = UIView()
@@ -181,17 +183,16 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         // Add search bar to scroll content view
         contentView.addSubview(searchBar)
         
-//        // Scanner button
-//        let qrButton = UIButton()
-//        qrButton.frame = CGRect(x: searchBar.frame.maxX - searchBar.frame.height, y: searchBar.frame.minY, width: searchBar.frame.height, height: searchBar.frame.height)
-//        qrButton.backgroundColor = .white
-//        qrButton.roundCorners(corners: [.topRight, .bottomRight], radius: 3)
-//        
-//        let qrIcon = UIImageView()
-//        qrIcon.image = UIImage(named: "qr-icon")
-//        qrIcon.frame = CGRect(x: 0, y: 0, width: qrButton.frame.width, height: qrButton.frame.height)
-//        qrButton.addSubview(qrIcon)
-//        contentView.addSubview(qrButton)
+        // Scanner button
+        qrButton.frame = CGRect(x: searchBar.frame.maxX - searchBar.frame.height, y: searchBar.frame.minY, width: searchBar.frame.height, height: searchBar.frame.height)
+        qrButton.backgroundColor = .white
+        qrButton.roundCorners(corners: [.topRight, .bottomRight], radius: 3)
+        
+        let qrIcon = UIImageView()
+        qrIcon.image = UIImage(named: "qr-icon")
+        qrIcon.frame = CGRect(x: 0, y: 0, width: qrButton.frame.width, height: qrButton.frame.height)
+        qrButton.addSubview(qrIcon)
+        contentView.addSubview(qrButton)
 
         // Configure sites container
         sitesContainer.frame = CGRect(x: self.view.frame.minX + (self.view.frame.size.width - 315) / 2, y: searchBar.frame.maxY + 30, width: 315, height: 750)
@@ -384,6 +385,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
                     
                     // Resize searchbar
                     self.searchBar.frame = CGRect(x: self.view.frame.minX + 100, y: self.chaynsLabel.frame.maxY + 40, width: self.view.frame.width - 200, height: 40)
+                    
+                    // Reposition qr button
+                    self.qrButton.frame = CGRect(x: self.searchBar.frame.maxX - self.searchBar.frame.height, y: self.searchBar.frame.minY, width: self.searchBar.frame.height, height: self.searchBar.frame.height)
                     
                     // Adjust sitesContainer width for bigger space between icons
                     self.newSitesContainer.frame = CGRect(x: self.searchBar.frame.minX + 50, y: self.searchBar.frame.maxY + 30, width: self.searchBar.frame.width - 100, height: 750)
