@@ -16,6 +16,7 @@
 		0789475D25D29F5200FD0AC1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0789475C25D29F5200FD0AC1 /* SceneDelegate.swift */; };
 		07B1B87025D6B4F20071DF93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B1B86F25D6B4F20071DF93 /* WebViewController.swift */; };
 		07CBC75425D52C6B00905213 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBC75325D52C6B00905213 /* TabBar.swift */; };
+		07E5BE8C25E50C7700EFA9AF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E5BE8B25E50C7700EFA9AF /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		0789475C25D29F5200FD0AC1 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		07B1B86F25D6B4F20071DF93 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		07CBC75325D52C6B00905213 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		07E5BE8B25E50C7700EFA9AF /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				075EADD625D1281B00C36EBF /* Info.plist */,
 				07CBC75325D52C6B00905213 /* TabBar.swift */,
 				07B1B86F25D6B4F20071DF93 /* WebViewController.swift */,
+				07E5BE8B25E50C7700EFA9AF /* Config.swift */,
 			);
 			path = "chayns-ios-clone";
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				075EADCD25D1281A00C36EBF /* ViewController.swift in Sources */,
 				075EADC925D1281A00C36EBF /* AppDelegate.swift in Sources */,
 				0789475D25D29F5200FD0AC1 /* SceneDelegate.swift in Sources */,
+				07E5BE8C25E50C7700EFA9AF /* Config.swift in Sources */,
 				07B1B87025D6B4F20071DF93 /* WebViewController.swift in Sources */,
 				07CBC75425D52C6B00905213 /* TabBar.swift in Sources */,
 			);
